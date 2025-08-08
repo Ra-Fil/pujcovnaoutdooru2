@@ -1,0 +1,91 @@
+KOMPLETNÍ NÁVOD PRO NASAZENÍ NA DIGITALOCEAN
+============================================
+
+📦 TENTO BALÍČEK OBSAHUJE:
+- Produkční React aplikaci (frontend)
+- Node.js Express server (backend) 
+- Všechny potřebné závislosti
+- Konfigurační soubory pro DigitalOcean
+- Kompletní dokumentaci
+
+🚀 RYCHLÉ NASAZENÍ NA DIGITALOCEAN APP PLATFORM:
+
+1. GITHUB REPOSITORY:
+   - Nahrajte obsah tohoto balíčku do GitHub repository
+   - Commitněte všechny soubory
+
+2. DIGITALOCEAN DASHBOARD:
+   - Jděte na https://cloud.digitalocean.com/apps
+   - Klikněte "Create App"
+   - Vyberte "GitHub" jako source
+
+3. KONFIGURACE APLIKACE:
+   - Repository: vyberte váš repository
+   - Build Command: npm install
+   - Run Command: npm start
+   - HTTP Port: 8080
+
+4. DATABÁZE:
+   - V App Platform přidejte PostgreSQL databázi
+   - Automaticky se nastaví DATABASE_URL environment variable
+
+5. DEPLOYMENT:
+   - Klikněte "Create Resources"
+   - Počkejte 5-10 minut na build a deployment
+   - Aplikace bude dostupná na poskytnuté URL
+
+💰 NÁKLADY:
+- Basic aplikace: $5/měsíc
+- PostgreSQL databáze: $15/měsíc
+- Celkem: ~$20/měsíc
+
+🔧 MANUÁLNÍ INSTALACE NA VPS:
+
+1. Připojení k serveru:
+   ssh root@your-server-ip
+
+2. Instalace Node.js 18+:
+   curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+   apt-get install -y nodejs
+
+3. Nahrání souborů:
+   - Zkopírujte obsah balíčku na server do /var/www/app/
+
+4. Instalace:
+   cd /var/www/app/
+   npm install --production
+
+5. Konfigurace:
+   cp .env.example .env
+   # Upravte .env s vašimi údaji
+
+6. Spuštění:
+   chmod +x start.sh
+   ./start.sh
+
+📋 ENVIRONMENT VARIABLES (POVINNÉ):
+DATABASE_URL=postgresql://user:pass@host:5432/dbname
+
+📋 ENVIRONMENT VARIABLES (VOLITELNÉ):
+NODE_ENV=production
+PORT=8080
+SESSION_SECRET=some-random-secret
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=email@domain.com
+SMTP_PASS=app-password
+
+✅ PO ÚSPĚŠNÉM NASAZENÍ:
+- Aplikace běží na portu 8080
+- Frontend dostupný na hlavní URL
+- Admin rozhraní na /admin
+- API endpointy na /api/*
+
+🆘 ŘEŠENÍ PROBLÉMŮ:
+- Zkontrolujte DATABASE_URL v environment variables
+- Ověřte, že PostgreSQL databáze je dostupná
+- Aplikace potřebuje Node.js 18 nebo vyšší
+
+📞 PODPORA:
+Kompletní dokumentace v README.md
+Konfigurace pro DigitalOcean v app.yaml
